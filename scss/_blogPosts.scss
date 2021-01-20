@@ -11,7 +11,7 @@
         grid-template-columns: 1fr 1fr;
         gap: 1.875rem;
         padding: 5rem;
-       
+        
 
         @include breakpoint-up(medium) {
             grid-template-columns: repeat(2, 1fr);
@@ -23,6 +23,8 @@
             padding-left: 25rem;
 
         }
+
+     
     }
 
  
