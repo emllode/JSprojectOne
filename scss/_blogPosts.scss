@@ -1,0 +1,29 @@
+.blogPosts {        
+
+    padding: 3rem;
+    margin-top: 5rem;
+    
+
+    font-size: x-large;
+
+    &__items {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.875rem;
+        padding: 5rem;
+       
+
+        @include breakpoint-up(medium) {
+            grid-template-columns: repeat(2, 1fr);
+            padding-left: 5rem;
+        }
+
+        @include breakpoint-up(large) {
+            grid-template-columns: repeat(4, 1fr);
+            padding-left: 25rem;
+
+        }
+    }
+
+ 
+}
