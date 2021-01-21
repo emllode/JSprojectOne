@@ -80,9 +80,8 @@ addPostBtn.addEventListener('click', function() {
     
 });
 
-/* TODO: Löst så att man kan redigera texten när man trycker på edit knappen, dock kan man då
-hela tiden redigera utan att trycka på nytt så behöver skapa ett sätt där den "avslutas/sparas"
-när man trycker på edit knappen eller en ny knapp som är "done editing" */
+/* TODO: Löste så man kan redigera samt avsluta redigering. Vill helst göra detta tydligare +
+skapa så att man ser direkt att man kan redigera, inte behöva trycka på texten. */
 
 
  let editBtn = document.querySelector(".editBtn");
@@ -91,9 +90,13 @@ när man trycker på edit knappen eller en ny knapp som är "done editing" */
  editBtn.addEventListener('click', function(){
      span = document.getElementById("text");
      span.contentEditable = "true";
+
+     editBtn.addEventListener('click', function(){
+        span = document.getElementById("text");
+        span.contentEditable = "false";})
     
  })
 
-
+s
  
 
