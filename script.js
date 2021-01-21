@@ -39,6 +39,7 @@ let addPostBtn = document.querySelector(".addPostBtn");
 
 
 
+
 addPostBtn.addEventListener('click', function() {
     //skapade ett nytt "kort" som tar in elementet paragraf.
     let newDiv = document.createElement('div');
@@ -66,21 +67,33 @@ addPostBtn.addEventListener('click', function() {
 
     //Skapar class namn till min div som skapas. 
     newDiv.className = "card";
+    
 
     /*lägga till denna tag som har all info ovan inuti sig i hemsidan efter att man
      trycker på post knappen. */
      blogPosts.prepend(newDiv);
+
+     
     
     //TODO: Behöver nu göra så den skapar samma design som mina inlägg med rubrik + paragraf
     //TODO: samt samma layout som de har. 
     
 });
 
-// Skapa en event när man trycker edit skall inlägget kunna bli redigerat.
-
-editBtn.addEventListener('click', function {
-
-});
+/* TODO: Löst så att man kan redigera texten när man trycker på edit knappen, dock kan man då
+hela tiden redigera utan att trycka på nytt så behöver skapa ett sätt där den "avslutas/sparas"
+när man trycker på edit knappen eller en ny knapp som är "done editing" */
 
 
+ let editBtn = document.querySelector(".editBtn");
+
+
+ editBtn.addEventListener('click', function(){
+     span = document.getElementById("text");
+     span.contentEditable = "true";
+    
+ })
+
+
+ 
 

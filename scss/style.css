@@ -51,9 +51,9 @@ button {
 
 @media (min-width: 64em) {
   .blogPosts__items {
-    -ms-grid-columns: (1fr)[4];
-        grid-template-columns: repeat(4, 1fr);
-    padding-left: 25rem;
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+    padding-left: 15rem;
   }
 }
 /*# sourceMappingURL=style.css.map */
