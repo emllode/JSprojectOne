@@ -26,17 +26,11 @@ function readMore(blog) {
 }
 
 
-/*  TODO:
-    Ska skapa edit-tool som möjliggör så usern kan ta in egen input och spara i varje inlägg.
-*/
-
-
 
 let blogPosts =  document.querySelector(".blogPosts__items");
 let addHeader = document.querySelector(".addHeader");
 let addText = document.querySelector(".addText");
 let addPostBtn = document.querySelector(".addPostBtn");
-
 
 
 
@@ -51,8 +45,6 @@ addPostBtn.addEventListener('click', function() {
     let newCardHeader = document.createTextNode(addHeader.value);
     let newCardContent = document.createTextNode(addText.value);
     let newEditBtnContent = document.createTextNode("Edit");
-
-    
 
     //lägga in input från användaren i kort-taggen.
     newCard.appendChild(newCardContent);
@@ -73,30 +65,50 @@ addPostBtn.addEventListener('click', function() {
      trycker på post knappen. */
      blogPosts.prepend(newDiv);
 
-     
-    
-    //TODO: Behöver nu göra så den skapar samma design som mina inlägg med rubrik + paragraf
-    //TODO: samt samma layout som de har. 
     
 });
 
-/* TODO: Löste så man kan redigera samt avsluta redigering. Vill helst göra detta tydligare +
-skapa så att man ser direkt att man kan redigera, inte behöva trycka på texten. */
+/*
+Klick event som sätter igång edit knappen.
+Därefter säger jag åt den att komma åt klassen text som är <p> taggen. därefter säga "okej"
+du kan nu redigera texten. Inuti denna skapade jag ytterligare ett klick event för att avsluta
+detta. genom att säga "false".
 
+TODO: Måste fixa så man kan redigera varje enskild card, just nu funkar nedast id, som jagt lagt över hela
+TODO: över hela blogposts_items.....
+*/
 
  let editBtn = document.querySelector(".editBtn");
+  editBtn.addEventListener('click', function(){
+      span = document.getElementById("text");
+      span.contentEditable = "true";
 
-
- editBtn.addEventListener('click', function(){
-     span = document.getElementById("text");
-     span.contentEditable = "true";
-
-     editBtn.addEventListener('click', function(){
-        span = document.getElementById("text");
-        span.contentEditable = "false";})
     
- })
+      editBtn.addEventListener('click', function(){
+         span = document.getElementById("text");
+         span.contentEditable = "false";
+     })
+    
+  })
 
-s
- 
 
+
+/*  //Kod som jag försöker få fungera, att varje enskild inlägg kan redigeras genom dens egna knapp
+ function editMore(blog) {   
+    let btnEdit = document.querySelector(`.card[data-blog="${blog}"] .editBtn`);
+    //span = document.getElementById("text");
+    span = document.querySelector(`.card[data-blog="${blog}"] .text`);
+    
+    if(true){
+        btnEdit.addEventListener('click', function(){
+            span = document.getElementById("text");
+            span.contentEditable = "true";
+        })
+    
+    }
+    else {
+            span.contentEditable = "false";
+        }
+
+}
+*/
