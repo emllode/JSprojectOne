@@ -1,4 +1,7 @@
-
+/* 
+Använde debuggern genom att skriva console.log(X) för att se ifall document.querySelector funkade för 
+varje identifier när problem uppstod, använde Console.log som en check så allt faktiskt kommunicera korrekt.
+*/
 
 
 
@@ -17,7 +20,7 @@ Jag har även fixat så varje "card" har sin egen data-blog och detta är för k
  
  - > TODO: vill lösa så varje nytt inlägg genererar en egen "data-blog" kod som då knappen kan hänvisas till.
  Troligtvis behöver jag skapa någon loop som hostar ut en ny siffra eller något till varje data-blog + 
- onclick-event.
+ onclick-event. 
 
 
 */
@@ -59,6 +62,10 @@ addPostBtn.addEventListener('click', function() {
     let newCard = document.createElement('p');
     let newEditBtn = document.createElement('button');
 
+    /* Har lagt in contentEidtable = true så varje nytt inlägg kan redigeras, tills jag löst med edit knappen
+     så får detta var mina lösning. */
+    newCard.contentEditable ="true";
+
     //Gjorde så den input som användaren skrev i inputen hamnar i newcardContent.
     let newCardHeader = document.createTextNode(addHeader.value);
     let newCardContent = document.createTextNode(addText.value);
@@ -69,8 +76,9 @@ addPostBtn.addEventListener('click', function() {
     newHeader.appendChild(newCardHeader);
     newEditBtn.appendChild(newEditBtnContent);
 
+    //skapar klassnamn
     newCard.className = "text";
-
+    newEditBtn.className ="editBtn";
 
     //appendar in varje element in i div taggen.
     newDiv.appendChild(newHeader);
@@ -79,56 +87,58 @@ addPostBtn.addEventListener('click', function() {
 
     //Skapar class namn till min div som skapas, detta för den skall ärva all SASS info.
     newDiv.className = "card";
-
-
+    
     /*lägga till denna tag som har all info ovan inuti sig i hemsidan efter att man
      trycker på post knappen. */
      blogPosts.prepend(newDiv);
 
 });
 
-
-
-
- //Löste en if/esle med eventlistener som invänar edit-knappen och således kan man edit sitt inlägg.
- // DOCK endast en gång och sedan vill det inte upprepas. 
- function editMore(blog) {
+function editMore(blog) {
      
     let btnEdit = document.querySelector(`.card[data-blog="${blog}"] .editBtn`);
     let span = document.querySelector(`.card[data-blog="${blog}"] p`);
-
+    
     if(text.contentEditable = "false"){
       
         btnEdit.addEventListener('click', function(){
             btnEdit.textContent = "Save Changes";
-            //span = document.getElementById("text");
             span.contentEditable = "true";
 
             btnEdit.addEventListener('click', function(){
                 btnEdit.textContent = "edit";
-                span.contentEditable = "false";
-            })
-    
-        })
-
+                span.contentEditable = "false"; 
+                 return;                    
+            })   
+            return; 
+        })     
     }
-
-    else {
-
-        btnEdit.addEventListener('click', function(){
-            btnEdit.textContent = "edit";
-            //span = document.getElementById("text");
-            span.contentEditable = "false";
-
-            btnEdit.addEventListener('click', function(){
-                btnEdit.textContent = "save changes";
-                span.contentEditable = "true";
-            })
-    
-        })
-
+    else { 
+        
     }
+}
+
+
+// function editMore(blog) {
+     
+//     let btnEdit = document.querySelector(`.card[data-blog="${blog}"] .editBtn`);
+//     let span = document.querySelector(`.card[data-blog="${blog}"] p`);
+
+//  while(text.contentEditable="true")
+//  {
+//      btnEdit.addEventListener('click', function(){
+//         btnEdit.textContent = "Save Changes";
+//         span.contentEditable = "true";
+
+//         btnEdit.addEventListener('click', function(){
+//             btnEdit.textContent = "edit";
+//             span.contentEditable = "false"; 
+//         })   
+
+//      })
+//  }
+
+// }
 
 
 
- }
