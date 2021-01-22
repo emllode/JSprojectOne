@@ -40,18 +40,28 @@ p {
   font-weight: bold;
 }
 
-.header {
-  text-align: center;
-  font-size: xx-large;
-}
-
-.header h2 {
+h2 {
   color: black;
   -webkit-text-fill-color: whitesmoke;
   /* Will override color (regardless of order) */
   -webkit-text-stroke-width: 1.5px;
   -webkit-text-stroke-color: black;
   letter-spacing: 3px;
+}
+
+.header {
+  text-align: center;
+  font-size: xx-large;
+}
+
+.header h2 {
+  color: rosybrown;
+  -webkit-text-fill-color: rosybrown;
+  /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
+  letter-spacing: 3px;
+  font-size: 60px;
 }
 
 .header textarea {
@@ -88,5 +98,17 @@ p {
         grid-template-columns: repeat(2, 1fr);
     padding-left: 10rem;
   }
+}
+
+.blogPosts p {
+  color: black;
+}
+
+.blogPosts h2 {
+  -webkit-text-fill-color: rosybrown;
+  /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: gray;
+  letter-spacing: 1px;
 }
 /*# sourceMappingURL=style.css.map */

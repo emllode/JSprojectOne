@@ -91,7 +91,7 @@ addPostBtn.addEventListener('click', function() {
     //Gjorde så den input som användaren skrev i inputen hamnar i newcardContent.
     let newCardHeader = document.createTextNode(addHeader.value);
     let newCardContent = document.createTextNode(addText.value);
-    let newEditBtnContent = document.createTextNode("Edit");
+    let newEditBtnContent = document.createTextNode("du kan redigera utan knappen..");
 
     //lägga in input från användaren i kort-taggen.
     newCard.appendChild(newCardContent);

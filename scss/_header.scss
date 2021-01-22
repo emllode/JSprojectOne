@@ -4,11 +4,12 @@
    
     
     h2 {
-        color: black;
-        -webkit-text-fill-color: whitesmoke; /* Will override color (regardless of order) */
-        -webkit-text-stroke-width: 1.5px;
+        color: rosybrown;
+        -webkit-text-fill-color:rosybrown; /* Will override color (regardless of order) */
+        -webkit-text-stroke-width: 2px;
         -webkit-text-stroke-color: black;
         letter-spacing: 3px;
+        font-size: 60px;
 
     }
     textarea {
@@ -17,7 +18,7 @@
     }
 
 
-  
+
 }
 
 

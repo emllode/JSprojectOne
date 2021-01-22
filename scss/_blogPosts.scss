@@ -26,5 +26,17 @@
      
     }
 
+    p {
+        color: black;
+    }
+
+    h2 {
+       
+        -webkit-text-fill-color: rosybrown; /* Will override color (regardless of order) */
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: gray;
+        letter-spacing: 1px;
+    }
+
  
 }
