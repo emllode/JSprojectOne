@@ -1,13 +1,43 @@
 button {
-  border-color: red;
-  border-radius: 2px;
   font-weight: 400;
   min-width: 8rem;
   min-height: 3rem;
+  cursor: pointer;
+  --offset: 10px;
+  --border-size: 2px;
+  position: relative;
+  padding: 1.5em 3em;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: 0;
+  background: transparent;
+  color: #e55743;
+  text-transform: uppercase;
+  letter-spacing: .25em;
+  outline: none;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 0;
+  -webkit-box-shadow: inset 0 0 0 var(--border-size) currentcolor;
+          box-shadow: inset 0 0 0 var(--border-size) currentcolor;
+}
+
+button:hover {
+  content: "";
+  background: whitesmoke;
+  opacity: 0.3;
+  -webkit-transition: all 0.8s;
+  transition: all 0.8s;
 }
 
 #more {
   display: none;
+}
+
+p {
+  color: gray;
+  font-weight: bold;
 }
 
 .header {
@@ -15,15 +45,18 @@ button {
   font-size: xx-large;
 }
 
-.header input.addHeader, .header input.addText {
-  width: 15%;
-  padding: 12px 20px;
-  margin: 8px 0px;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+.header h2 {
+  color: black;
+  -webkit-text-fill-color: whitesmoke;
+  /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1.5px;
+  -webkit-text-stroke-color: black;
+  letter-spacing: 3px;
+}
+
+.header textarea {
+  text-align: center;
+  font-size: x-large;
 }
 
 .blogPosts {
@@ -53,7 +86,7 @@ button {
   .blogPosts__items {
     -ms-grid-columns: (1fr)[2];
         grid-template-columns: repeat(2, 1fr);
-    padding-left: 15rem;
+    padding-left: 10rem;
   }
 }
 /*# sourceMappingURL=style.css.map */

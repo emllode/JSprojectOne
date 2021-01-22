@@ -1,14 +1,28 @@
 /* 
-Använde debuggern genom att skriva console.log(X) för att se ifall document.querySelector funkade för 
-varje identifier när problem uppstod, använde Console.log som en check så allt faktiskt kommunicera korrekt.
+Jag använde debuggern genom chrome där jag skrev console.log(X) i consolen som man får upp genom inspektera
+sidan detta var för att se ifall document.querySelector funkade för varje identifier när problem uppstod, 
+använde Console.log som en check så allt faktiskt kommunicera korrekt.
+
+Använde även breakpoints för att lösa problem som uppstod, genom att kolla rad för rad vad som hände, var
+på detta sätt jag löste mitt edit knapp problem som kan läsas nedan och hitta problemet.
+
+Använde även sources - > javaScript för att se ifall eventListener funkade, då man kan se i realtid när man 
+trycke på ett event att man faktikst ser en förändring. I Detta fall så kollade jag på contentEditable
+faktiskt förändrades när jag tryckte på edit knappen.
 
 
+--
 DEBUG PROBLEM MED EDIT KNAPP
 Suttit flera timmar nu med lösa så edit-knappen kan upprepas, och inte bara fungera en gång. Än så länge har
 jag lagt breakpoints i den delen av koden och det fick mig tyda att någonstans i den andra eventListener
 (när jag skall återgå till normal-läge) så verkar inte inte upppfatta att den ska lämna funktionen.
-*/
 
+Valde att lösa dett genom skapa ytterligare en funktion för när contentEditable="true" och således dyker en 
+ny knapp upp som är "save", detta var då jag tänkte att problemet låg i att jag hadde flera inclick events
+i en if/else samt functions. Bröt ner problemet och tog isär problemet i två delar istället, och jag tog
+isär problemet där breakpointen började att loopa av sig själv.
+
+--
 
 
 /* Skapat en funktion som förlänger texten genom att btnText trycks.
@@ -24,9 +38,6 @@ Jag har även fixat så varje "card" har sin egen data-blog och detta är för k
  på ena kortet.
 
  
- - > TODO: vill lösa så varje nytt inlägg genererar en egen "data-blog" kod som då knappen kan hänvisas till.
- Troligtvis behöver jag skapa någon loop som hostar ut en ny siffra eller något till varje data-blog + 
- onclick-event. 
 
 
 */
@@ -54,6 +65,11 @@ function readMore(blog) {
 /* Här har jag skapat ett event som skapar ett nyt blogginlägg. Detta gjordes genom att funktionen tar info
 från input-boxarna och genererar ny kod som är en kopia av mina befintliga blogginlägg,
  så får samma SASS-struktur.
+
+  - > TODO: vill lösa så varje nytt inlägg genererar en egen "data-blog" kod som då knappen kan hänvisas till.
+ Troligtvis behöver jag skapa någon loop som hostar ut en ny siffra eller något till varje data-blog + 
+ onclick-event, så att varje nytt inlägg får en edit/save knapp.
+
  */
 
 let blogPosts =  document.querySelector(".blogPosts__items");
@@ -100,8 +116,9 @@ addPostBtn.addEventListener('click', function() {
 
 });
 
-// Löste Edit - save genom två inviduella knappar, en för edit, en för save. 
-// TODO: Behöver nu bara lösa så ena knappen försvinner/dyker upp beroende på vad man gör. 
+
+/* Skapat 2 funktioner som togglar 2 knappar edit/save. */
+
 
 
 function editMore(blog) {
@@ -125,10 +142,6 @@ function editMore(blog) {
 }
 
 
-/* TODO: Skapa en till function = saveBtn som är exakt som ovan kod fast tvärtom.*/
-
-
-
     function saveMore(blog) {
      
     let btnSave = document.querySelector(`.card[data-blog="${blog}"] .saveBtn`);
@@ -142,7 +155,6 @@ function editMore(blog) {
             btnSave.style.display="none";
             btnEdit.style.display ="inline";
             
-
         })     
     }
     else { 

@@ -1,20 +1,21 @@
 .header {
     text-align: center;
     font-size: xx-large;
-
-
-
-
-    input.addHeader, input.addText {
-        width: 15%;
-        padding: 12px 20px;
-        margin: 8px 0px;
-        display: inline-block;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
+   
+    
+    h2 {
+        color: black;
+        -webkit-text-fill-color: whitesmoke; /* Will override color (regardless of order) */
+        -webkit-text-stroke-width: 1.5px;
+        -webkit-text-stroke-color: black;
+        letter-spacing: 3px;
 
     }
+    textarea {
+        text-align: center;
+        font-size: x-large;
+    }
+
 
   
 }
