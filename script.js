@@ -1,6 +1,12 @@
 /* 
 Använde debuggern genom att skriva console.log(X) för att se ifall document.querySelector funkade för 
 varje identifier när problem uppstod, använde Console.log som en check så allt faktiskt kommunicera korrekt.
+
+
+DEBUG PROBLEM MED EDIT KNAPP
+Suttit flera timmar nu med lösa så edit-knappen kan upprepas, och inte bara fungera en gång. Än så länge har
+jag lagt breakpoints i den delen av koden och det fick mig tyda att någonstans i den andra eventListener
+(när jag skall återgå till normal-läge) så verkar inte inte upppfatta att den ska lämna funktionen.
 */
 
 
@@ -94,51 +100,57 @@ addPostBtn.addEventListener('click', function() {
 
 });
 
+// Löste Edit - save genom två inviduella knappar, en för edit, en för save. 
+// TODO: Behöver nu bara lösa så ena knappen försvinner/dyker upp beroende på vad man gör. 
+
+
 function editMore(blog) {
      
     let btnEdit = document.querySelector(`.card[data-blog="${blog}"] .editBtn`);
     let span = document.querySelector(`.card[data-blog="${blog}"] p`);
+    let btnSave = document.querySelector(`.card[data-blog="${blog}"] .saveBtn`);
     
     if(text.contentEditable = "false"){
       
         btnEdit.addEventListener('click', function(){
-            btnEdit.textContent = "Save Changes";
             span.contentEditable = "true";
-
-            btnEdit.addEventListener('click', function(){
-                btnEdit.textContent = "edit";
-                span.contentEditable = "false"; 
-                 return;                    
-            })   
-            return; 
+            btnSave.style.display ="inline";
+            btnEdit.style.display ="none";
+ 
         })     
     }
     else { 
-        
+        return;
     }
 }
 
 
-// function editMore(blog) {
+/* TODO: Skapa en till function = saveBtn som är exakt som ovan kod fast tvärtom.*/
+
+
+
+    function saveMore(blog) {
      
-//     let btnEdit = document.querySelector(`.card[data-blog="${blog}"] .editBtn`);
-//     let span = document.querySelector(`.card[data-blog="${blog}"] p`);
+    let btnSave = document.querySelector(`.card[data-blog="${blog}"] .saveBtn`);
+    let span = document.querySelector(`.card[data-blog="${blog}"] p`);
+    let btnEdit = document.querySelector(`.card[data-blog="${blog}"] .editBtn`);
+    
+    if(text.contentEditable = "true"){
+      
+        btnSave.addEventListener('click', function(){;
+            span.contentEditable = "false";
+            btnSave.style.display="none";
+            btnEdit.style.display ="inline";
+            
 
-//  while(text.contentEditable="true")
-//  {
-//      btnEdit.addEventListener('click', function(){
-//         btnEdit.textContent = "Save Changes";
-//         span.contentEditable = "true";
+        })     
+    }
+    else { 
+        return;
+        
+    }
+}
 
-//         btnEdit.addEventListener('click', function(){
-//             btnEdit.textContent = "edit";
-//             span.contentEditable = "false"; 
-//         })   
-
-//      })
-//  }
-
-// }
 
 
 
