@@ -15,10 +15,53 @@
     textarea {
         text-align: center;
         font-size: x-large;
+        margin-top: 1rem;
+        
     }
 
+    &__rubrik{
+      
+        textarea {
+            min-width: 8rem;
+            min-height: 3rem;
 
+         @include breakpoint-up(medium) {
+         min-width: 30rem;
+        min-height: 3rem;
+         }
 
+        @include breakpoint-up(large){
+            min-width: 60rem;
+            min-height: 4rem;
+        }
+        }
+    }
+    &__text {
+
+        textarea {
+            min-width: 8rem;
+            min-height: 10rem;
+         @include breakpoint-up(medium){
+             min-width: 30rem;
+             min-height: 10rem;
+         }
+
+         @include breakpoint-up(large){
+            min-width: 60rem;
+            min-height: 10rem;
+        }
+        }
+    }
+  
+
+//style="min-width: 60rem; min-height: 3rem;
+
+}
+
+.header__github {
+    font-size: 28px;
+    
+    
 }
 
 

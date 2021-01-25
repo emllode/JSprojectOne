@@ -1,7 +1,7 @@
 .blogPosts {        
 
-    padding: 3rem;
-    margin-top: 5rem;
+    padding: 0rem;
+    margin-top: 3rem;
     
 
     font-size: x-large;
@@ -10,7 +10,7 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 1.875rem;
-        padding: 5rem;
+        padding: 0rem;
         
         @include breakpoint-up(medium) {
             grid-template-columns: repeat(2, 1fr);
@@ -20,6 +20,7 @@
         @include breakpoint-up(large) {
             grid-template-columns: repeat(2, 1fr);
             padding-left: 10rem;
+            padding-top: 5rem;
 
         }
 

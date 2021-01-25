@@ -62,9 +62,9 @@ function readMore(blog) {
 
 
 
-/* Här har jag skapat ett event som skapar ett nyt blogginlägg. Detta gjordes genom att funktionen tar info
+/* Här har jag skapat ett event som skapar ett nytt blogginlägg. Detta gjordes genom att funktionen tar info
 från input-boxarna och genererar ny kod som är en kopia av mina befintliga blogginlägg,
- så får samma SASS-struktur.
+ så får det samma SASS-struktur då .scss koden är detsamma då den går efter class-namnen.
 
   - > TODO: vill lösa så varje nytt inlägg genererar en egen "data-blog" kod som då knappen kan hänvisas till.
  Troligtvis behöver jag skapa någon loop som hostar ut en ny siffra eller något till varje data-blog + 
@@ -117,7 +117,14 @@ addPostBtn.addEventListener('click', function() {
 });
 
 
-/* Skapat 2 funktioner som togglar 2 knappar edit/save. */
+/* Skapat 2 funktioner som togglar 2 knappar edit/save. - > Detta möjligggör att jag sätter igång/av 
+contentEditable, som möjliggör redigering av texten. Utöver detta så sköter även koden så att rätt knapp
+dyker upp.
+
+
+Tankar/förbättrningar: känns sjukt onödigt att ha två funktioner, måste hitta lösning runt det. Känns 
+som att en bool if/else bör räcka, men har misslyckats än så länge med göra någon slags if/else eller bool.
+*/
 
 
 

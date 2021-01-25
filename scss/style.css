@@ -40,15 +40,6 @@ p {
   font-weight: bold;
 }
 
-h2 {
-  color: black;
-  -webkit-text-fill-color: whitesmoke;
-  /* Will override color (regardless of order) */
-  -webkit-text-stroke-width: 1.5px;
-  -webkit-text-stroke-color: black;
-  letter-spacing: 3px;
-}
-
 .header {
   text-align: center;
   font-size: xx-large;
@@ -67,11 +58,54 @@ h2 {
 .header textarea {
   text-align: center;
   font-size: x-large;
+  margin-top: 1rem;
+}
+
+.header__rubrik textarea {
+  min-width: 8rem;
+  min-height: 3rem;
+}
+
+@media (min-width: 40em) {
+  .header__rubrik textarea {
+    min-width: 30rem;
+    min-height: 3rem;
+  }
+}
+
+@media (min-width: 64em) {
+  .header__rubrik textarea {
+    min-width: 60rem;
+    min-height: 4rem;
+  }
+}
+
+.header__text textarea {
+  min-width: 8rem;
+  min-height: 10rem;
+}
+
+@media (min-width: 40em) {
+  .header__text textarea {
+    min-width: 30rem;
+    min-height: 10rem;
+  }
+}
+
+@media (min-width: 64em) {
+  .header__text textarea {
+    min-width: 60rem;
+    min-height: 10rem;
+  }
+}
+
+.header__github {
+  font-size: 28px;
 }
 
 .blogPosts {
-  padding: 3rem;
-  margin-top: 5rem;
+  padding: 0rem;
+  margin-top: 3rem;
   font-size: x-large;
 }
 
@@ -81,7 +115,7 @@ h2 {
   -ms-grid-columns: 1fr 1fr;
       grid-template-columns: 1fr 1fr;
   gap: 1.875rem;
-  padding: 5rem;
+  padding: 0rem;
 }
 
 @media (min-width: 40em) {
@@ -97,6 +131,7 @@ h2 {
     -ms-grid-columns: (1fr)[2];
         grid-template-columns: repeat(2, 1fr);
     padding-left: 10rem;
+    padding-top: 5rem;
   }
 }
 
