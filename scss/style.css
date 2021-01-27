@@ -40,6 +40,10 @@ p {
   font-weight: bold;
 }
 
+.saveBtn {
+  display: none;
+}
+
 .header {
   text-align: center;
   font-size: xx-large;
@@ -146,5 +150,9 @@ p {
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: gray;
   letter-spacing: 1px;
+}
+
+.blogPosts .saveBtn {
+  display: none;
 }
 /*# sourceMappingURL=style.css.map */

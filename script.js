@@ -10,6 +10,9 @@ Använde även sources - > javaScript för att se ifall eventListener funkade, d
 trycke på ett event att man faktikst ser en förändring. I Detta fall så kollade jag på contentEditable
 faktiskt förändrades när jag tryckte på edit knappen.
 
+Utöver detta så har jag börjat använda "watch"-funktionen i andra program för att t.ex ta reda på positionering
+i fjärils-projektet som vi hade i föregående föreläsning och anpassa lösningen utefter vad värdet ges.
+
 
 --
 DEBUG PROBLEM MED EDIT KNAPP
@@ -32,10 +35,12 @@ isär problemet där breakpointen började att loopa av sig själv.
  igång. Där dots försvinner, texten syns genom "inline" samt ny knapp.
 
  DEBUGGING:
-Jag har även fixat så varje "card" har sin egen data-blog och detta är för kringå så inte alla
+Jag har även fixat så varje "card" har sin egen data-blog id och detta är för kringå så inte alla
  cards öppnas samtidigt vilket jag fick innan då jag endast sa att ifall man trycker read-more knappen 
  så skall card klassen öppnas. Detta ledde till att alla korten i raden öppnades även om jag bara tryckte
  på ena kortet.
+
+ problemeet här är att jag behöver skriva ut en loop som kostar ut ett nytt "id" till varje nytt inlägg.
 
  
 
@@ -82,37 +87,55 @@ addPostBtn.addEventListener('click', function() {
     let newDiv = document.createElement('div');
     let newHeader = document.createElement('h2');
     let newCard = document.createElement('p');
+    let newReadmoreBtn = document.createElement('button');
     let newEditBtn = document.createElement('button');
+    let saveButton = document.createElement('button');
+    
+    let newPost =  ((new Date()).getTime()/500);
 
     /* Har lagt in contentEidtable = true så varje nytt inlägg kan redigeras, tills jag löst med edit knappen
      så får detta var mina lösning. */
-    newCard.contentEditable ="true";
+    newCard.contentEditable ="false";
 
     //Gjorde så den input som användaren skrev i inputen hamnar i newcardContent.
     let newCardHeader = document.createTextNode(addHeader.value);
     let newCardContent = document.createTextNode(addText.value);
-    let newEditBtnContent = document.createTextNode("du kan redigera utan knappen..");
+    let newReadmoreButton = document.createTextNode("Read more");
+    let newEditBtnContent = document.createTextNode("edit");
+    let newSaveButton = document.createTextNode("save");
 
-    //lägga in input från användaren i kort-taggen.
+
+    //lägga in input diverse inputs både från användare + egna
     newCard.appendChild(newCardContent);
     newHeader.appendChild(newCardHeader);
+    newReadmoreBtn.appendChild(newReadmoreButton);
     newEditBtn.appendChild(newEditBtnContent);
+    saveButton.appendChild(newSaveButton);
 
     //skapar klassnamn
     newCard.className = "text";
+    newReadmoreBtn.ClassName ="myBtn"
     newEditBtn.className ="editBtn";
+    saveButton.className ="saveBtn"
+   // newEditBtn.setAttribute('data-blog' , (new Date()).   getTime()/500);
+   newReadmoreBtn.onclick = function() { saveMore(newPost)};
+   newEditBtn.onclick = function() { editMore(newPost)};
+   saveButton.onclick = function() { saveMore(newPost)};
+  
+    
 
     //appendar in varje element in i div taggen.
     newDiv.appendChild(newHeader);
     newDiv.appendChild(newCard);
     newDiv.appendChild(newEditBtn);
+    newDiv.appendChild(newReadmoreBtn);
 
     //Skapar class namn till min div som skapas, detta för den skall ärva all SASS info.
-    newDiv.className = "card";
-    
+    newDiv.className = "card";   
+    newDiv.setAttribute('data-blog' , newPost);
     /*lägga till denna tag som har all info ovan inuti sig i hemsidan efter att man
      trycker på post knappen. */
-     blogPosts.prepend(newDiv);
+     blogPosts.prepend(newDiv); 
 
 });
 
@@ -121,6 +144,10 @@ addPostBtn.addEventListener('click', function() {
 contentEditable, som möjliggör redigering av texten. Utöver detta så sköter även koden så att rätt knapp
 dyker upp.
 
+Försökte först skapa en function med samma struktur som nedan men jag hade ytterligare en eventListener
+inuti if statement, problemet som uppstod då var att jag endast kunde redigera 1 gång, försökte lösa detta
+genom att bryta ut den i else statement istället men då funka det inte alls. Valde då att bara skapa 
+två funktioner, och en till knapp som skulle "togglas" beroende på eventet. 
 
 Tankar/förbättrningar: känns sjukt onödigt att ha två funktioner, måste hitta lösning runt det. Känns 
 som att en bool if/else bör räcka, men har misslyckats än så länge med göra någon slags if/else eller bool.
@@ -134,40 +161,44 @@ function editMore(blog) {
     let span = document.querySelector(`.card[data-blog="${blog}"] p`);
     let btnSave = document.querySelector(`.card[data-blog="${blog}"] .saveBtn`);
     
-    if(text.contentEditable = "false"){
+ 
       
         btnEdit.addEventListener('click', function(){
+
+            if(text.contentEditable = "false"){
             span.contentEditable = "true";
             btnSave.style.display ="inline";
             btnEdit.style.display ="none";
- 
-        })     
-    }
-    else { 
-        return;
-    }
+            }
+
+            else {
+                return;
+            }
+       
+    })
+
 }
 
 
-    function saveMore(blog) {
+function saveMore(blog) {
      
     let btnSave = document.querySelector(`.card[data-blog="${blog}"] .saveBtn`);
     let span = document.querySelector(`.card[data-blog="${blog}"] p`);
     let btnEdit = document.querySelector(`.card[data-blog="${blog}"] .editBtn`);
-    
-    if(text.contentEditable = "true"){
+
       
-        btnSave.addEventListener('click', function(){;
+        btnSave.addEventListener('click', function(){
+         if(text.contentEditable = "true"){
             span.contentEditable = "false";
             btnSave.style.display="none";
-            btnEdit.style.display ="inline";
-            
-        })     
-    }
-    else { 
-        return;
-        
-    }
+            btnEdit.style.display ="inline";      
+        } 
+        else { 
+            return;
+                
+        }   
+    })
+ 
 }
 
 
