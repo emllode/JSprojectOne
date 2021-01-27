@@ -45,7 +45,7 @@ p {
 }
 
 .editBtn {
-  display: inline;
+  display: none;
 }
 
 .header {
@@ -107,6 +107,14 @@ p {
   }
 }
 
+.addPostBtn {
+  padding: 2rem;
+}
+
+.removeAllPosts {
+  margin-top: 1rem;
+}
+
 .header__github {
   font-size: 28px;
 }
@@ -154,9 +162,5 @@ p {
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: gray;
   letter-spacing: 1px;
-}
-
-.blogPosts .saveBtn {
-  display: none;
 }
 /*# sourceMappingURL=style.css.map */

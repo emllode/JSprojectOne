@@ -60,11 +60,8 @@ function readMore(blog) {
         dots.style.display = "none";
         btnText.textContent = "Read less";
         moreText.style.display = "inline";
-
     }
 }
-
-
 
 
 /* Här har jag skapat ett event som skapar ett nytt blogginlägg. Detta gjordes genom att funktionen tar info
@@ -79,7 +76,7 @@ en halv sekund då en användare inte bör kunna skapa ett nytt inlägg fortare 
  */
 
 let blogPosts =  document.querySelector(".blogPosts__items");
-let addHeader = document.querySelector(".addHeader");
+let addHeader = document.querySelector(".addHeader");   
 let addText = document.querySelector(".addText");
 let addPostBtn = document.querySelector(".addPostBtn");
 
@@ -90,7 +87,6 @@ addPostBtn.addEventListener('click', function() {
     let newCard = document.createElement('p');
     let newEditBtn = document.createElement('button');
     let saveButton = document.createElement('button');
-    let readMore = document.createElement('button');
     
 
     //nytt genererat data blog id
@@ -105,8 +101,6 @@ addPostBtn.addEventListener('click', function() {
     let newCardContent = document.createTextNode(addText.value);
     let newEditBtnContent = document.createTextNode("edit");
     let newSaveButton = document.createTextNode("save");
-  
-
 
     //lägga in input diverse inputs både från användare + egna
     newCard.appendChild(newCardContent);
@@ -114,19 +108,14 @@ addPostBtn.addEventListener('click', function() {
     newEditBtn.appendChild(newEditBtnContent);
     saveButton.appendChild(newSaveButton);
 
-
     //skapar klassnamn
     newCard.className = "text";
     newEditBtn.className ="editBtn";
-    saveButton.className ="saveBtn"
+    saveButton.className ="saveBtn";
 
-
-    //Skapar onclick eventet för edit/save. 
+    //Skapar onclick eventet för edit/save och tar editmore/savemore funktionerna + newPost.
    newEditBtn.onclick = function() { editMore(newPost)};
    saveButton.onclick = function() { saveMore(newPost)};
-
-  
-    
 
     //appendar in varje element in i div taggen.
     newDiv.appendChild(newHeader);
@@ -208,4 +197,11 @@ function saveMore(blog) {
 
 
 
+
+//Tar bort alla inlägg
+let removeAll = document.querySelector(".removeAllPosts");
+
+removeAll.addEventListener('click', function(){
+    document.querySelectorAll('.card').forEach(e => e.remove());
+})
 
