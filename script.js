@@ -71,9 +71,10 @@ function readMore(blog) {
 från input-boxarna och genererar ny kod som är en kopia av mina befintliga blogginlägg,
  så får det samma SASS-struktur då .scss koden är detsamma då den går efter class-namnen.
 
-  - > TODO: vill lösa så varje nytt inlägg genererar en egen "data-blog" kod som då knappen kan hänvisas till.
- Troligtvis behöver jag skapa någon loop som hostar ut en ny siffra eller något till varje data-blog + 
- onclick-event, så att varje nytt inlägg får en edit/save knapp.
+har även löst så att ett nytt genererad attribut "data-blog" skapas samt att edit/save 
+knapparna funkar genom detta. Idéen först var att skapa en slags loop som hostar ut
+en ny siffra men bara lättare att de namn som ett nummer tagit ur getTime, och kör med
+en halv sekund då en användare inte bör kunna skapa ett nytt inlägg fortare än så.
 
  */
 
@@ -87,10 +88,12 @@ addPostBtn.addEventListener('click', function() {
     let newDiv = document.createElement('div');
     let newHeader = document.createElement('h2');
     let newCard = document.createElement('p');
-    let newReadmoreBtn = document.createElement('button');
     let newEditBtn = document.createElement('button');
     let saveButton = document.createElement('button');
+    let readMore = document.createElement('button');
     
+
+    //nytt genererat data blog id
     let newPost =  ((new Date()).getTime()/500);
 
     /* Har lagt in contentEidtable = true så varje nytt inlägg kan redigeras, tills jag löst med edit knappen
@@ -100,27 +103,28 @@ addPostBtn.addEventListener('click', function() {
     //Gjorde så den input som användaren skrev i inputen hamnar i newcardContent.
     let newCardHeader = document.createTextNode(addHeader.value);
     let newCardContent = document.createTextNode(addText.value);
-    let newReadmoreButton = document.createTextNode("Read more");
     let newEditBtnContent = document.createTextNode("edit");
     let newSaveButton = document.createTextNode("save");
+  
 
 
     //lägga in input diverse inputs både från användare + egna
     newCard.appendChild(newCardContent);
-    newHeader.appendChild(newCardHeader);
-    newReadmoreBtn.appendChild(newReadmoreButton);
+    newHeader.appendChild(newCardHeader); 
     newEditBtn.appendChild(newEditBtnContent);
     saveButton.appendChild(newSaveButton);
 
+
     //skapar klassnamn
     newCard.className = "text";
-    newReadmoreBtn.ClassName ="myBtn"
     newEditBtn.className ="editBtn";
     saveButton.className ="saveBtn"
-   // newEditBtn.setAttribute('data-blog' , (new Date()).   getTime()/500);
-   newReadmoreBtn.onclick = function() { saveMore(newPost)};
+
+
+    //Skapar onclick eventet för edit/save. 
    newEditBtn.onclick = function() { editMore(newPost)};
    saveButton.onclick = function() { saveMore(newPost)};
+
   
     
 
@@ -128,11 +132,12 @@ addPostBtn.addEventListener('click', function() {
     newDiv.appendChild(newHeader);
     newDiv.appendChild(newCard);
     newDiv.appendChild(newEditBtn);
-    newDiv.appendChild(newReadmoreBtn);
+    newDiv.appendChild(saveButton);
 
     //Skapar class namn till min div som skapas, detta för den skall ärva all SASS info.
     newDiv.className = "card";   
     newDiv.setAttribute('data-blog' , newPost);
+
     /*lägga till denna tag som har all info ovan inuti sig i hemsidan efter att man
      trycker på post knappen. */
      blogPosts.prepend(newDiv); 

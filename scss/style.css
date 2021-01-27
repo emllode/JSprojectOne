@@ -41,7 +41,11 @@ p {
 }
 
 .saveBtn {
-  display: none;
+  display: inline;
+}
+
+.editBtn {
+  display: inline;
 }
 
 .header {
