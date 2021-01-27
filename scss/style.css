@@ -119,6 +119,12 @@ p {
   font-size: 28px;
 }
 
+.removeAllPosts {
+  margin-top: 1rem;
+  font-size: 10px;
+  color: gray;
+}
+
 .blogPosts {
   padding: 0rem;
   margin-top: 3rem;

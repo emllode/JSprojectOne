@@ -196,8 +196,6 @@ function saveMore(blog) {
 }
 
 
-
-
 //Tar bort alla inlägg
 let removeAll = document.querySelector(".removeAllPosts");
 
