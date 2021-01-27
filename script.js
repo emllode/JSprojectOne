@@ -131,7 +131,14 @@ addPostBtn.addEventListener('click', function() {
      trycker på post knappen. */
      blogPosts.prepend(newDiv); 
 
+    //Tar bort texten efter de blivit skrivit.
+     addHeader.value = " ";
+     addText.value = " ";
+
 });
+
+
+
 
 
 /* Skapat 2 funktioner som togglar 2 knappar edit/save. - > Detta möjligggör att jag sätter igång/av 
