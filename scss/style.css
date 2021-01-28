@@ -48,12 +48,23 @@ p {
   display: inline;
 }
 
+.darkModeBtn {
+  margin-left: 1rem;
+  margin-top: 1rem;
+  font-size: 10px;
+  color: gray;
+}
+
 .darkMode {
   background-color: black;
 }
 
 .darkMode .text {
   color: white;
+}
+
+.darkMode .header__title {
+  -webkit-text-stroke-color: none;
 }
 
 .header {

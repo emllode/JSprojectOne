@@ -52,6 +52,10 @@ p {
 }
 
 .darkModeBtn {
+    margin-left: 1rem;
+    margin-top: 1rem;
+    font-size: 10px;
+    color: gray;
 
 }
 
@@ -60,6 +64,11 @@ p {
    
     .text {
         color: white;
+    }
+
+       
+    .header__title {
+        -webkit-text-stroke-color: none;   
     }
 
 }
