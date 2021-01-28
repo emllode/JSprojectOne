@@ -48,6 +48,14 @@ p {
   display: inline;
 }
 
+.darkMode {
+  background-color: black;
+}
+
+.darkMode .text {
+  color: white;
+}
+
 .header {
   text-align: center;
   font-size: xx-large;

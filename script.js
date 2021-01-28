@@ -88,8 +88,7 @@ addPostBtn.addEventListener('click', function() {
     let newEditBtn = document.createElement('button');
     let saveButton = document.createElement('button');
     
-
-    //nytt genererat data blog id
+    //nytt genererat id som skall gå till data-blog så edit/save funkar för varje individuellt inlägg som skapas.
     let newPost =  ((new Date()).getTime()/500);
 
     /* Har lagt in contentEidtable = true så varje nytt inlägg kan redigeras, tills jag löst med edit knappen
@@ -181,6 +180,8 @@ function editMore(blog) {
 }
 
 
+
+
 function saveMore(blog) {
      
     let btnSave = document.querySelector(`.card[data-blog="${blog}"] .saveBtn`);
@@ -210,3 +211,16 @@ removeAll.addEventListener('click', function(){
     document.querySelectorAll('.card').forEach(e => e.remove());
 })
 
+
+
+//Dark Mode
+function darkMode() {
+    let darkMode = document.body;
+    darkMode.classList.toggle("darkMode");
+  }
+  
+  let darkModeBtn = document.querySelector('.darkModeBtn');
+
+  darkModeBtn.addEventListener('click', function() {
+      darkMode();
+  })
