@@ -154,6 +154,11 @@ hade ett bra tag ett problem at första gången man tryckte på edit/save så be
 två gånger. Detta var för mitt eventListener var inuti functionen. Bröt ur oeventet och hänvisade
 bara till functionen inuti och då funkade det.
 
+Körde med breakpoints för att ta reda på vad som skulle ske när jag tryckte på edit.  Såg då 
+den hoppade över addEventListener och de som är inuti första gången, så de gav mig tanken att
+bryta ut, vilket då funkade. Testade då att helt ta bort clickeventet, och det gick (?) Så skiter
+helt i att ha ett clickEvent utan bara if/else i functionen.
+
 Tankar/förbättrningar: känns sjukt onödigt att ha två funktioner, måste hitta lösning runt det. Känns 
 som att en bool if/else bör räcka, men har misslyckats än så länge med göra någon slags if/else eller bool.
 */
@@ -178,11 +183,7 @@ function editMore(blog) {
 
 }
 
-let btnEdit = document.querySelector(`.card[data-blog="${blog}"] .editBtn`);
-btnEdit.addEventListener('click', function(){
-    editMore();
 
-})
 
 
 
@@ -205,10 +206,8 @@ function saveMore(blog) {
     
  
 }
-let btnSave = document.querySelector(`.card[data-blog="${blog}"] .saveBtn`);
-btnSave.addEventListener('click', function(){ 
-    saveMore();
-})
+
+
 
 
 //Tar bort alla inlägg
