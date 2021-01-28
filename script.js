@@ -149,6 +149,11 @@ inuti if statement, problemet som uppstod då var att jag endast kunde redigera 
 genom att bryta ut den i else statement istället men då funka det inte alls. Valde då att bara skapa 
 två funktioner, och en till knapp som skulle "togglas" beroende på eventet. 
 
+DEBBUGING:
+hade ett bra tag ett problem at första gången man tryckte på edit/save så behövde man göra det 
+två gånger. Detta var för mitt eventListener var inuti functionen. Bröt ur oeventet och hänvisade
+bara till functionen inuti och då funkade det.
+
 Tankar/förbättrningar: känns sjukt onödigt att ha två funktioner, måste hitta lösning runt det. Känns 
 som att en bool if/else bör räcka, men har misslyckats än så länge med göra någon slags if/else eller bool.
 */
@@ -160,11 +165,7 @@ function editMore(blog) {
     let btnEdit = document.querySelector(`.card[data-blog="${blog}"] .editBtn`);
     let span = document.querySelector(`.card[data-blog="${blog}"] p`);
     let btnSave = document.querySelector(`.card[data-blog="${blog}"] .saveBtn`);
-    
- 
       
-        btnEdit.addEventListener('click', function(){
-
             if(text.contentEditable = "false"){
             span.contentEditable = "true";
             btnSave.style.display ="inline";
@@ -173,11 +174,15 @@ function editMore(blog) {
 
             else {
                 return;
-            }
-       
-    })
+            }   
 
 }
+
+let btnEdit = document.querySelector(`.card[data-blog="${blog}"] .editBtn`);
+btnEdit.addEventListener('click', function(){
+    editMore();
+
+})
 
 
 
@@ -188,8 +193,6 @@ function saveMore(blog) {
     let span = document.querySelector(`.card[data-blog="${blog}"] p`);
     let btnEdit = document.querySelector(`.card[data-blog="${blog}"] .editBtn`);
 
-      
-        btnSave.addEventListener('click', function(){
          if(text.contentEditable = "true"){
             span.contentEditable = "false";
             btnSave.style.display="none";
@@ -199,9 +202,13 @@ function saveMore(blog) {
             return;
                 
         }   
-    })
+    
  
 }
+let btnSave = document.querySelector(`.card[data-blog="${blog}"] .saveBtn`);
+btnSave.addEventListener('click', function(){ 
+    saveMore();
+})
 
 
 //Tar bort alla inlägg
@@ -218,9 +225,8 @@ function darkMode() {
     let darkMode = document.body;
     darkMode.classList.toggle("darkMode");
   }
-  
-  let darkModeBtn = document.querySelector('.darkModeBtn');
 
+  let darkModeBtn = document.querySelector('.darkModeBtn');
   darkModeBtn.addEventListener('click', function() {
       darkMode();
   })
